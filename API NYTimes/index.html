@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<h3>Search Parameters</h3>
+    <label>Search Term:
+        <input type="text" name="" id="searchTerm" class="form-control" value="" required="required" pattern="" title="Search Term">
+    </label>
+    <br>
+    <div class="form-group">
+        <label for="input" class="col-sm-2 control-label">Number of Records to Retrieve:</label>
+        <select name="" id="" class="form-control" required="required">
+            <option value="one">1</option>
+            <option value="five">5</option>
+            <option value="ten">10</option>
+        </select>
+    </div>
+    <label>Start Year (Optional):
+        <input type="text" name="" id="startYear" class="form-control" value="" required="required" pattern="" title="">
+    </label>
+    <br>
+    <label>End Year (Optional):
+        <input type="text" name="" id="input" class="form-control" value="" required="required" pattern="" title="">
+    </label>
+    <br>
+    <button id="searchButton">Search</button>
+    <button id="clearResults">Clear Results</button>
+<script src='http://code.jquery.com/jquery-2.1.3.min.js'></script>
+
+	<script type="text/javascript">
+			var APIKey = "b9f91d369ff59547cd47b931d8cbc56b:0:74623931";
+			var input = $('#searchTerm').val().trim();
+			var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + APIKey + "&q=" + input;
+				$.ajax({url: queryURL, method: 'GET'})
+
+	    		.done(function(response) {
+	    			console.log(response);
+	    			numRecordsRetrieve = $('#numToRetrieveID').val();
+	    			if(numRecordsRetrieve == 1) {
+					$('#topArticles').append("1 " + response.response.docs[0].headline.main + "<br>" + "Author: " + response.response.docs[0].byline.original + "<br>" + "Web URL: " + response.response.docs[0].web_url + "<br>" + "Date Published: " + response.response.docs[0].pub_date + "<br>" + "Section: " + response.response.docs[0].section_name + "<br><hr>");
+					}
+					if(numRecordsRetrieve == 5) {
+						for(var i = 0; i < numRecordsRetrieve; i++) {
+							$('#topArticles').append(i+1 + " " + response.response.docs[i].headline.main + "<br>" + "Author: " + response.response.docs[i].byline.original + "<br>" + "Web URL: " + response.response.docs[i].web_url + "<br>" + "Date Published: " + response.response.docs[i].pub_date + "<br>" + "Section: " + response.response.docs[i].section_name + "<br><hr>");
+						}
+					}
+					if(numRecordsRetrieve == 10) {
+						for(var i = 0; i < numRecordsRetrieve; i++) {
+							$('#topArticles').append(i+1 + " " + response.response.docs[i].headline.main + "<br>" + "Author: " + response.response.docs[i].byline.original + "<br>" + "Web URL: " + response.response.docs[i].web_url + "<br>" + "Date Published: " + response.response.docs[i].pub_date + "<br>" + "Section: " + response.response.docs[i].section_name + "<br><hr>");
+						}
+					}
+    			});
+	</script>
+
+</body>
+</html>

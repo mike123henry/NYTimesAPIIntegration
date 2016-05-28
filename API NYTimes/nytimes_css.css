@@ -1,0 +1,44 @@
+* {
+    box-sizing: border-box;
+    margin: 0 auto;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+html {}
+
+body {}
+
+.jumbotron {
+    background-color: black;
+    color: white;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.table {
+	width: 83.33333%;
+}
+
+.searchSection {
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+.searchTitle {
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: black;
+    color: white;
+}
+
+.searchTitle h3 {
+	 margin-top: 0;
+    margin-bottom: 0;
+}
+label {
+	width: 100%;
+}
+
+.resultsSection {}
+
+button {
+
+}
